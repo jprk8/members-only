@@ -8,3 +8,13 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+input,
+textarea {
+    appearance: none;
+    /* border: 1px solid grey; */
+    border: none;
+    background-color: transparent;
+    border-bottom: 1px solid grey;
+    color: inherit;
+}

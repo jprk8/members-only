@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/register.css">
+</head>
+<body>
+    <%- include('header') %>
+    <main>
+        <h1><%= title %></h1>
+        <form action="/posts/create-post" method="POST">
+            <div class="form-row">
+                <label for="title">Title</label>
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    minlength="1"
+                    maxlength="150"
+                    placeholder="Title"
+                    required
+                />
+            </div>
+            <div class="form-row">
+                <label for="content">Content</label>
+                <textarea
+                    name="content"
+                    id="content"
+                    rows="3"
+                    cols="50"
+                    maxlength="300"
+                    placeholder="Write your message"
+                    required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <a href="/">Cancel</a>
+    </main>
+</body>
+</html>

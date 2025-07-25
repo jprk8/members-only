@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -12,14 +12,14 @@
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  background-color: #0b111d;
+  background-color: #161922;
   color: #ddd;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  font-family: 'Fira Sans';
+  font-family: 'JetBrains Mono';
 }
 
 img, picture, video, canvas, svg {
@@ -49,4 +49,47 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   color: inherit;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 30px;
+  background-color: black;
+  position: relative;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+.secret-level {
+  font-weight: 1000;
+  font-size: 18px;
+  letter-spacing: -2px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.big-q {
+  font-size: 26px;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.user-container {
+  display: flex;
+  gap: 20px;
 }

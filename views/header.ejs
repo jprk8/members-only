@@ -1,0 +1,13 @@
+<header>
+    <a href="/" class="logo">Club Anonymous</a>
+    <div class="secret-level">?<span class="big-q">?</span>?</div>
+    <div class="user-container">
+        <% if (locals.user) { %>
+            <p>Welcome, <%= user.first_name %></p>
+            <a href="/logout">Log Out</a>
+        <% } else { %>
+            <a href="/login">Log In</a>
+            <a href="/register">Register</a>
+        <% } %>
+    </div>
+</header>

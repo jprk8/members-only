@@ -4,15 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Club Anonymous</title>
-    <link rel="stylesheet" href="./styles/base.css">
+    <link rel="stylesheet" href="/styles/base.css">
+    <link rel="stylesheet" href="/styles/index.css">
 </head>
 <body>
-    <h1>Club Anonymous</h1>
-    <% if (locals.user) { %>
-        <p>Logged in as <%= user.username %></p>
-        <a href="/logout">Log Out</a>
-    <% } %>
-    <a href="/login">Log In</a>
-    <a href="/register">Sign Up</a>
+    <%- include('header') %>
+    <main>
+        <h1>Club Anonymous</h1>
+        <% if (locals.user) { %>
+            <a href="/posts/create-post">+Create Post</a>
+        <% } %>
+        <% if (posts.length === 0) { %>
+            <p>There are no posts.</p>
+        <% } else { %>
+            <div class="card-container">
+                <% posts.forEach((post) => { %>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-name">
+                                <%= post.full_name %> &#40;&#64;<%= post.username %>&#41;
+                            </div>
+                            <div class="card-created"><%= post.created %></div>
+                        </div>
+                        <div class="card-title"><%= post.title %></div>
+                        <div class="card-content"><%= post.content %></div>
+
+                    </div>
+                <% }) %>
+            </div>
+        <% } %>
+    </main>
 </body>
 </html>
