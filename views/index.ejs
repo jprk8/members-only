@@ -12,7 +12,7 @@
     <main>
         <h1>Club Anonymous</h1>
         <% if (locals.user) { %>
-            <a href="/posts/create-post">+Create Post</a>
+            <a href="/posts/create-post" class="create-btn">+Create Post</a>
         <% } %>
         <% if (posts.length === 0) { %>
             <p>There are no posts.</p>

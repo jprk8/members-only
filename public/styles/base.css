@@ -63,20 +63,14 @@ header {
 
 .logo {
   text-decoration: none;
+  font-weight: 1000;
 }
 
 .secret-level {
-  font-weight: 1000;
-  font-size: 18px;
-  letter-spacing: -2px;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
-}
-
-.big-q {
-  font-size: 26px;
 }
 
 main {
@@ -92,4 +86,21 @@ main {
 .user-container {
   display: flex;
   gap: 20px;
+  align-items: center;
+}
+
+.user-nameplate {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  border: 2px solid grey;
+  border-radius: 24px;
+  padding: 6px 12px; 
+}
+
+.login-btn {
+  border: 2px solid grey;
+  border-radius: 24px;
+  padding: 4px 12px;
+  text-decoration: none;
 }

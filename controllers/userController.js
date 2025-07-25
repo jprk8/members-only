@@ -37,7 +37,7 @@ async function indexGet(req, res) {
 }
 
 function registerGet(req, res) {
-    res.render('register', { title: 'Join the Club'})
+    res.render('register', { title: 'Create User'})
 }
 
 async function handleRegisterPost(req, res) {
