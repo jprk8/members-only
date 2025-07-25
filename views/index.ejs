@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
+    <title>Club Anonymous</title>
     <link rel="stylesheet" href="./styles/base.css">
 </head>
 <body>
-    <h1><%= title %></h1>
-    <button>Login</button>
-    <a href="/register"><button>Sign Up</button></a>
+    <h1>Club Anonymous</h1>
+    <% if (locals.user) { %>
+        <p>Logged in as <%= user.username %></p>
+        <a href="/logout">Log Out</a>
+    <% } %>
+    <a href="/login">Log In</a>
+    <a href="/register">Sign Up</a>
 </body>
 </html>

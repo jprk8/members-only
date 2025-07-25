@@ -8,7 +8,20 @@ async function findUserByUsername(username) {
         const { rows } = await pool.query(SQL, [username]);
         return rows[0] || null;
     } catch (err) {
-        console.error('Error finding username:', err);
+        console.error('Error finding by username:', err);
+        throw err;
+    }
+}
+
+async function findUserById(id) {
+    try {
+        const SQL = `
+            SELECT * FROM users WHERE id = $1;
+        `;
+        const { rows } = await pool.query(SQL, [id]);
+        return rows[0] || null;
+    } catch (err) {
+        console.error('Error finding by ID', err);
         throw err;
     }
 }
@@ -29,4 +42,5 @@ async function addUser(user, hashedPassword) {
 module.exports = {
     addUser,
     findUserByUsername,
+    findUserById,
 }
