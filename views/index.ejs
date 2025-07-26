@@ -1,3 +1,4 @@
+<% const isPrivileged = locals.user && (user.membership === 'super' || user.membership === 'admin'); %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,9 +23,19 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="card-name">
-                                <%= post.full_name %> &#40;&#64;<%= post.username %>&#41;
+                                <% if (isPrivileged) { %>
+                                    <%= post.full_name %> &#40;&#64;<%= post.username %>&#41;
+                                <% } else { %>
+                                    <div class="anon">ANON</div>
+                                <% } %>
                             </div>
-                            <div class="card-created"><%= post.created %></div>
+                            <div class="card-created">
+                                <% if (isPrivileged) { %>
+                                    <%= post.created %>
+                                <% } else { %>
+                                    <div class="anon">REDACTED</div>
+                                <% } %>
+                            </div>
                         </div>
                         <div class="card-title"><%= post.title %></div>
                         <div class="card-content"><%= post.content %></div>
