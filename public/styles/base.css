@@ -91,6 +91,7 @@ main {
   gap: 40px;
   width: 100%;
   max-width: 800px;
+  padding: 24px 0;
 }
 
 .user-container {
@@ -111,11 +112,23 @@ main {
 .login-btn {
   border: 2px solid grey;
   border-radius: 24px;
-  padding: 4px 12px;
+  padding: 5px 12px;
   text-decoration: none;
 }
 
 .anon {
     background-color: black;
     padding: 0 3px;
+}
+
+.hidden-label {
+  display: none;
+}
+
+.error {
+  color: hotpink;
+}
+
+button {
+  cursor: pointer;
 }

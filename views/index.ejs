@@ -27,14 +27,14 @@
                                     <% if (isPrivileged) { %>
                                         <%= post.full_name %> &#40;&#64;<%= post.username %>&#41;
                                     <% } else { %>
-                                        <div class="anon">ANON</div>
+                                        <div class="anon">[ANON]</div>
                                     <% } %>
                                 </div>
                                 <div class="card-created">
                                     <% if (isPrivileged) { %>
                                         <%= post.created %>
                                     <% } else { %>
-                                        <div class="anon">REDACTED</div>
+                                        <div class="anon">[REDACTED]</div>
                                     <% } %>
                                 </div>
                             </div>

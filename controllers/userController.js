@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { body, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const db = require('../db/queries');
@@ -84,6 +85,25 @@ function logoutGet(req, res, next) {
     });
 }
 
+function secretLevelGet(req, res) {
+    if (req.isAuthenticated()) {
+        res.render('secret-level', { user: req.user });
+    } else {
+        res.redirect('/login');
+    }
+}
+
+async function secretLevelPost(req, res) {
+    const { password } = req.body;
+    if (password === process.env.SECRET_PW) {
+        await db.promoteUser(req.user.id);
+        req.user.membership = 'super';
+        res.redirect('/?message=Promotion successful!');
+    } else {
+        res.render('secret-level', { message: 'Incorrect password', user: req.user });
+    }
+}
+
 module.exports = {
     indexGet,
     registerGet,
@@ -92,4 +112,6 @@ module.exports = {
     loginGet,
     loginPost,
     logoutGet,
+    secretLevelGet,
+    secretLevelPost,
 };

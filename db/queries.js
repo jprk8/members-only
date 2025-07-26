@@ -96,6 +96,16 @@ async function getPostDetails(id) {
     }
 }
 
+async function promoteUser(id) {
+    try {
+        const SQL = `UPDATE users SET membership = 'super' WHERE id = $1;`;
+        await pool.query(SQL, [id]);
+    } catch (err) {
+        console.error('Error promoting user:', err);
+        throw err;
+    }
+}
+
 module.exports = {
     addUser,
     findUserByUsername,
@@ -103,4 +113,5 @@ module.exports = {
     getPosts,
     createPost,
     getPostDetails,
+    promoteUser,
 }

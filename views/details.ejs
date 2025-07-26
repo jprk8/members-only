@@ -16,8 +16,8 @@
                 <p><%= post.full_name %> &#40;&#64;<%= post.username %>&#41;</p>
                 <p>Created: <%= post.created %></p>
             <% } else { %>
-                <div class="anon">ANONYMOUS</div>
-                <p>Created: [REDACTED]</p>
+                <div class="anon">[ANONYMOUS]</div>
+                <div class="anon">Created: [REDACTED]</div>
             <% } %>
         </div>
         <h1><%= post.title %></h1>
