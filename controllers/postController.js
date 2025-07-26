@@ -6,7 +6,6 @@ function createPostGet(req, res) {
     } else {
         res.redirect('/login');
     }
-
 }
 
 async function createPostPost(req, res) {
@@ -16,10 +15,15 @@ async function createPostPost(req, res) {
     } else {
         res.redirect('/login');
     }
+}
 
+async function detailsGet(req, res) {
+    const post = await db.getPostDetails(req.params.id);
+    res.render('details', { post: post, user: req.user });
 }
 
 module.exports = {
     createPostGet,
     createPostPost,
+    detailsGet,
 }

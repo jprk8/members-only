@@ -1,18 +1,20 @@
 <header>
-    <a href="/" class="logo">Club Anonymous</a>
-    <a href="/secret-level" class="secret-level">
-        <img src="/assets/anonymous.svg" alt="secret level" width="32px" />
-    </a>
-    <div class="user-container">
-        <% if (locals.user) { %>
-            <div class="user-nameplate">
-                <img src="/assets/person.svg" alt="user icon">
-                <p><%= user.first_name %></p>
-            </div>
-            <a href="/logout">Log Out</a>
-        <% } else { %>
-            <a href="/login" class="login-btn">Log In</a>
-            <a href="/register">Register</a>
-        <% } %>
+    <div class="header-wrapper">
+        <a href="/" class="logo">CLUB ANON</a>
+        <a href="/secret-level" class="secret-level">
+            <img src="/assets/anonymous.svg" alt="secret level" width="32px" />
+        </a>
+        <div class="user-container">
+            <% if (locals.user) { %>
+                <div class="user-nameplate">
+                    <img src="/assets/person.svg" alt="user icon">
+                    <p><%= user.first_name %></p>
+                </div>
+                <a href="/logout">Log Out</a>
+            <% } else { %>
+                <a href="/login" class="login-btn">Log In</a>
+                <a href="/register">Register</a>
+            <% } %>
+        </div>
     </div>
 </header>

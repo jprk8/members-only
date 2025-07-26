@@ -11,7 +11,7 @@
 <body>
     <%- include('header') %>
     <main>
-        <h1>Club Anonymous</h1>
+        <div class="title">CLUB ANONYMOUS</div>
         <% if (locals.user) { %>
             <a href="/posts/create-post" class="create-btn">+Create Post</a>
         <% } %>
@@ -20,27 +20,28 @@
         <% } else { %>
             <div class="card-container">
                 <% posts.forEach((post) => { %>
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-name">
-                                <% if (isPrivileged) { %>
-                                    <%= post.full_name %> &#40;&#64;<%= post.username %>&#41;
-                                <% } else { %>
-                                    <div class="anon">ANON</div>
-                                <% } %>
+                    <a href="/posts/<%= post.id %>">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-name">
+                                    <% if (isPrivileged) { %>
+                                        <%= post.full_name %> &#40;&#64;<%= post.username %>&#41;
+                                    <% } else { %>
+                                        <div class="anon">ANON</div>
+                                    <% } %>
+                                </div>
+                                <div class="card-created">
+                                    <% if (isPrivileged) { %>
+                                        <%= post.created %>
+                                    <% } else { %>
+                                        <div class="anon">REDACTED</div>
+                                    <% } %>
+                                </div>
                             </div>
-                            <div class="card-created">
-                                <% if (isPrivileged) { %>
-                                    <%= post.created %>
-                                <% } else { %>
-                                    <div class="anon">REDACTED</div>
-                                <% } %>
-                            </div>
+                            <div class="card-title"><%= post.title %></div>
+                            <div class="card-content"><%= post.content %></div>
                         </div>
-                        <div class="card-title"><%= post.title %></div>
-                        <div class="card-content"><%= post.content %></div>
-
-                    </div>
+                    </a>
                 <% }) %>
             </div>
         <% } %>

@@ -1,0 +1,9 @@
+main {
+    align-items: start;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

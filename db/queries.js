@@ -74,10 +74,33 @@ async function createPost(post, user_id) {
     }
 }
 
+async function getPostDetails(id) {
+    try {
+        const SQL = `
+        SELECT 
+            posts.id,
+            posts.title,
+            posts.content,
+            TO_CHAR(posts.created, 'YYYY/MM/DD HH24:MI') AS created,
+            users.username,
+            users.first_name || ' ' || users.last_name AS full_name
+        FROM posts
+        LEFT JOIN users ON posts.user_id = users.id
+        WHERE posts.id = $1;
+        `;
+        const { rows } = await pool.query(SQL, [id]);
+        return rows[0];
+    } catch (err) {
+        console.error('Error fetching post details:', err);
+        throw err;
+    }
+}
+
 module.exports = {
     addUser,
     findUserByUsername,
     findUserById,
     getPosts,
     createPost,
+    getPostDetails,
 }
