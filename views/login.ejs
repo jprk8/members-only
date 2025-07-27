@@ -11,6 +11,9 @@
     <%- include('header') %>
     <main>
         <h1><%= title %></h1>
+        <% if (failed) { %>
+            <p class="error">Incorrect username and/or password</p>
+        <% } %>
         <form action="/login" method="POST">
             <div class="form-row">
                 <label for="username">Username</label>

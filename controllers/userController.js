@@ -66,13 +66,14 @@ function successGet(req, res) {
 }
 
 function loginGet(req, res) {
-    res.render('login', { title: 'Log In' });
+    const failed = 'fail' in req.query;
+    res.render('login', { title: 'Log In', failed: failed });
 }
 
 function loginPost(req, res, next) {
     passport.authenticate('local', {
         successRedirect: '/',
-        failureRedirect: '/login'
+        failureRedirect: '/login?fail'
     })(req, res, next);
 }
 

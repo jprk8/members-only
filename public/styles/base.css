@@ -132,3 +132,7 @@ main {
 button {
   cursor: pointer;
 }
+
+button[type='submit'] {
+  margin-top: 30px;
+}
