@@ -26,16 +26,8 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24 // 1 day
     }
 }));
+
 app.use(passport.session());
-
-app.use((req, res, next) => {
-    console.log('--- Session Info ---');
-    console.log(req.session);
-    console.log('--- User Info ---');
-    console.log(req.user);
-    next();
-});
-
 app.use('/', userRouter);
 app.use('/posts', postRouter);
 
