@@ -51,7 +51,7 @@ async function getPosts() {
             users.first_name || ' ' || users.last_name AS full_name
         FROM posts
         LEFT JOIN users ON posts.user_id = users.id
-        ORDER BY created DESC;
+        ORDER BY posts.created DESC;
         `;
         const { rows } = await pool.query(SQL);
         return rows;
