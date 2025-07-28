@@ -144,3 +144,11 @@ button {
     border-radius: 24px;
     border: none;
 }
+
+footer {
+  width: 100%;
+  /* background-color: black; */
+  text-align: center;
+  font-size: 14px;
+  padding: 5px 0;
+}
