@@ -52,7 +52,9 @@ async function handleRegisterPost(req, res) {
 
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
-        await db.addUser(req.body, hashedPassword);
+        console.log(req.body.admin);
+        const membership = (req.body.admin === 'true') ? 'admin' : 'member';
+        await db.addUser(req.body, hashedPassword, membership);
         res.redirect('/success?message=Registration%20Success');
     } catch (err) {
         console.error('Error adding user', err);
@@ -99,7 +101,7 @@ async function secretLevelPost(req, res) {
     if (password === process.env.SECRET_PW) {
         await db.promoteUser(req.user.id);
         req.user.membership = 'super';
-        res.redirect('/?message=Promotion successful!');
+        res.redirect('/?message=Promotion Successful!');
     } else {
         res.render('secret-level', { message: 'Incorrect password', user: req.user });
     }

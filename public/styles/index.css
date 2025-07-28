@@ -25,6 +25,12 @@
     color: #999;
 }
 
+.card-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .card-title {
     font-weight: 1000;
     font-size: 18px;
@@ -46,13 +52,9 @@
     font-family: 'Permanent Marker';
 }
 
-.create-btn {
-    background-color: #ccc;
-    color: #111;
-    padding: 5px 15px;
-    border-radius: 24px;
-}
-
-.create-btn:hover {
-    background-color: #999;
+.delete-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
 }

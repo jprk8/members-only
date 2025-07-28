@@ -1,4 +1,5 @@
 <% const isPrivileged = locals.user && (user.membership === 'super' || user.membership === 'admin'); %>
+<% const isAdmin = locals.user && user.membership === 'admin' %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
     <main>
         <div class="title">CLUB ANONYMOUS</div>
         <% if (locals.user) { %>
-            <a href="/posts/create-post" class="create-btn">+Create Post</a>
+            <a href="/posts/create-post" class="btn">+Create Post</a>
         <% } %>
         <% if (posts.length === 0) { %>
             <p>There are no posts.</p>
@@ -38,7 +39,20 @@
                                     <% } %>
                                 </div>
                             </div>
-                            <div class="card-title"><%= post.title %></div>
+                            <div class="card-title-container">
+                                <div class="card-title"><%= post.title %></div>
+                                <% if (isAdmin) { %>
+                                    <form
+                                        action="posts/<%= post.id %>/delete"
+                                        method="POST"
+                                        onsubmit="return confirm('Delete&#58; <%= post.title %> ?')"
+                                    >
+                                        <button type="submit" class="delete-btn">
+                                            <img src="/assets/delete.svg" alt="" width="24px"/>
+                                        </button>
+                                    </form>
+                                <% } %>
+                            </div>
                             <div class="card-content"><%= post.content %></div>
                         </div>
                     </a>

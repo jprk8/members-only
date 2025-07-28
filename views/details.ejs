@@ -1,4 +1,5 @@
 <% const isPrivileged = locals.user && (user.membership === 'super' || user.membership === 'admin'); %>
+<% const isAdmin = locals.user && user.membership === 'admin' %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,17 +12,31 @@
 <body>
     <%- include('header') %>
     <main>
-        <div class="post-header">
-            <% if (isPrivileged) { %>
-                <p><%= post.full_name %> &#40;&#64;<%= post.username %>&#41;</p>
-                <p>Created: <%= post.created %></p>
-            <% } else { %>
-                <div class="anon">[ANONYMOUS]</div>
-                <div class="anon">Created: [REDACTED]</div>
+        <div class="post-container">
+            <div class="post-header">
+                <% if (isPrivileged) { %>
+                    <p><%= post.full_name %> &#40;&#64;<%= post.username %>&#41;</p>
+                    <p>Created: <%= post.created %></p>
+                <% } else { %>
+                    <div class="anon">[ANONYMOUS]</div>
+                    <div class="anon">Created: [REDACTED]</div>
+                <% } %>
+            </div>
+            <h1><%= post.title %></h1>
+            <p><%= post.content %></p>
+            <% if (isAdmin) { %>
+                <form
+                    action="/posts/<%= post.id %>/delete"
+                    method="POST"
+                    onsubmit="return confirm('Delete&#58; <%= post.title %> ?')"
+                >
+                    <button type="submit" class="btn delete">
+                        Delete Post
+                    </button>
+                </form>
             <% } %>
         </div>
-        <h1><%= post.title %></h1>
-        <p><%= post.content %></p>
+        <a href="/" class="btn home-btn">Home</a>
     </main>
 </body>
 </html>

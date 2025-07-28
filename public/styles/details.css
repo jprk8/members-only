@@ -2,8 +2,29 @@ main {
     align-items: start;
 }
 
+.post-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+}
+
 .post-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
+}
+
+.home-btn {
+    align-self: center;
+}
+
+.delete {
+    color: hotpink;
+    background: none;
+    text-decoration: underline;
+}
+
+.post-container form {
+    align-self: center;
 }

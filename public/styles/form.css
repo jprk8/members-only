@@ -11,8 +11,6 @@ form {
 
 input,
 textarea {
-    appearance: none;
-    /* border: 1px solid grey; */
     border: none;
     background-color: transparent;
     border-bottom: 1px solid grey;

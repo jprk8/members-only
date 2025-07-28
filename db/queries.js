@@ -26,13 +26,13 @@ async function findUserById(id) {
     }
 }
 
-async function addUser(user, hashedPassword) {
+async function addUser(user, hashedPassword, membership) {
     try {
         const SQL = `
         INSERT INTO users (username, password, first_name, last_name, membership)
         VALUES ($1, $2, $3, $4, $5);
         `;
-        await pool.query(SQL, [user.username, hashedPassword, user.firstName, user.lastName, 'member']);
+        await pool.query(SQL, [user.username, hashedPassword, user.firstName, user.lastName, membership]);
     } catch (err) {
         console.error('Error creating user:', err);
         throw err;
@@ -106,6 +106,16 @@ async function promoteUser(id) {
     }
 }
 
+async function deletePost(id) {
+    try {
+        const SQL = `DELETE FROM posts WHERE posts.id = $1;`;
+        await pool.query(SQL, [id]);
+    } catch (err) {
+        console.error('Error deleting post:', err);
+        throw err;
+    }
+}
+
 module.exports = {
     addUser,
     findUserByUsername,
@@ -114,4 +124,5 @@ module.exports = {
     createPost,
     getPostDetails,
     promoteUser,
+    deletePost,
 }

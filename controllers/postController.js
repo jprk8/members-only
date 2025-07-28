@@ -22,8 +22,18 @@ async function detailsGet(req, res) {
     res.render('details', { post: post, user: req.user });
 }
 
+async function deletePostPost(req, res) {
+    if (req.isAuthenticated() && req.user.membership === 'admin') {
+        await db.deletePost(req.params.id);
+        res.redirect('/');
+    } else {
+        req.status(403).send('Access denied');
+    }
+}
+
 module.exports = {
     createPostGet,
     createPostPost,
     detailsGet,
+    deletePostPost,
 }
