@@ -2,6 +2,8 @@
 
 A minimalist message board application where registered users can post anonymous messages. Built using Node.js, Express, and PostgreSQL, with full user authentication, session handling, and privilege-based access control.
 
+[Visit Page](https://members-only-production-98b8.up.railway.app/)
+
 ## Features
 
 - User registration and login using Passport.js
