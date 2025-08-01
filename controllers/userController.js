@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 const db = require('../db/queries');
 const passport = require('passport');
 
-const alphaErr = 'must contain only numbers.';
+const alphaErr = 'must contain only letters.';
 const alphaNumError = 'must contain only letters and numbers.'
 const lengthErr = 'must be between 1 and 30 characters.';
 
